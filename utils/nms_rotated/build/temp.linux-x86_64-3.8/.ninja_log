@@ -1,0 +1,4 @@
+# ninja log v5
+0	7231	1698430465486884661	/workspace/yolo/utils/nms_rotated/build/temp.linux-x86_64-3.8/src/nms_rotated_cpu.o	691f25b491a1c557
+0	18561	1698430476810839699	/workspace/yolo/utils/nms_rotated/build/temp.linux-x86_64-3.8/src/nms_rotated_ext.o	28f5b32d3c19584e
+0	52763	1698430511010700596	/workspace/yolo/utils/nms_rotated/build/temp.linux-x86_64-3.8/src/nms_rotated_cuda.o	70e3a5d9b256a452
