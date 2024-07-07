@@ -5,7 +5,7 @@ A novel lightweight Rotational Object Detection algorithm is proposed to overcom
 
 This repository is based on [OBB-YOLO](https://github.com/hukaixuan19970627/yolov5_obb).
 
-Paper Citation-
+# Paper Citation-
 ```
 @article{chaurasia2024detection,
   title={Detection of objects in satellite and aerial imagery using channel and spatially attentive YOLO-CSL for surveillance},
@@ -18,13 +18,11 @@ Paper Citation-
 }
 ```
 
-# Installation
-Please refer to [install.md](./docs/install.md) for installation and dataset preparation.
+
 
 # Getting Started 
-# Getting Started
 
-This page provides basic usage about yolov5-obb. For installation instructions, please see [install.md](./install.md).
+For installation instructions, please see [install.md](./install.md).
 
 # Train a model
 
