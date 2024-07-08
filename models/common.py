@@ -163,14 +163,13 @@ class ca_layer(nn.Module):
         y = self.conv_du(y)
         return x * y
 
-##########################################################################
-##---------- Dual Attention Unit (DAU) ----------
-class DAU(nn.Module):
+########################################################################## The CSA Module
+class CSA(nn.Module):
     def __init__(
         self, n_feat, kernel_size=3, reduction=8,
         bias=False, bn=False, act=nn.GELU(), res_scale=1):
 
-        super(DAU, self).__init__()
+        super(CSA, self).__init__()
         modules_body = [conv12(n_feat, n_feat, kernel_size, bias=bias), act, conv12(n_feat, n_feat, kernel_size, bias=bias)]
         self.body = nn.Sequential(*modules_body)
         
@@ -273,7 +272,7 @@ class C3TR(nn.Module):
         self.cv2 = Conv(c1, c_, 1, 1)
         self.cv3 = Conv(2 * c_, c2, 1)  # act=FReLU(c2)
         self.m = nn.Sequential(*(Bottleneck(c_, c_, shortcut, g, e=1.0) for _ in range(n)))
-        self.m1 = DAU(c_)
+        self.m1 = CSA(c_)
         # self.m = nn.Sequential(*[CrossConv(c_, c_, 3, 1, g, 1.0, shortcut) for _ in range(n)])
 
     def forward(self, x):
@@ -303,7 +302,7 @@ class C3TR(C3):
     def __init__(self, c1, c2, n=1, shortcut=True, g=1, e=0.5):
         super().__init__(c1, c2, n, shortcut, g, e)
         c_ = int(c2 * e)
-        self.m = DAU(c_)
+        self.m = CSA(c_)
 '''
 
 
