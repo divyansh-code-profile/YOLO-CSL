@@ -273,11 +273,8 @@ class C3TR(nn.Module):
         self.cv3 = Conv(2 * c_, c2, 1)  # act=FReLU(c2)
         self.m = nn.Sequential(*(Bottleneck(c_, c_, shortcut, g, e=1.0) for _ in range(n)))
         self.m1 = CSA(c_)
-        # self.m = nn.Sequential(*[CrossConv(c_, c_, 3, 1, g, 1.0, shortcut) for _ in range(n)])
 
     def forward(self, x):
-        #print(self.m1(self.cv1(x)))
-        #print((self.m(self.cv1(x)) + self.m1(self.cv1(x)))==self.m(self.cv1(x)))
         return self.cv3(torch.cat((self.m(self.cv1(x)) + self.m1(self.cv1(x)), self.cv2(x)), dim=1))
         
         
@@ -291,7 +288,6 @@ class C3(nn.Module):
         self.cv3 = Conv(2 * c_, c2, 1)  # act=FReLU(c2)
         self.m = nn.Sequential(*(Bottleneck(c_, c_, shortcut, g, e=1.0) for _ in range(n)))
         
-        # self.m = nn.Sequential(*[CrossConv(c_, c_, 3, 1, g, 1.0, shortcut) for _ in range(n)])
 
     def forward(self, x):
         return self.cv3(torch.cat((self.m(self.cv1(x)), self.cv2(x)), dim=1))
